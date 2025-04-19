@@ -29,7 +29,7 @@ export default function Register() {
 
   return (
     <div className="register-container">
-      <h2>Sistema de Gerenciamento de Biblioteca</h2>
+      <h2>EduTrade - Compra e Venda de materiais</h2>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       <h2>Cadastrar</h2>
       <form className="register-form" onSubmit={handleSubmit}>

@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h2>Sistema de Gerenciamento de Biblioteca</h2>
+      <h2>EduTrade - Compra e Venda de materiais</h2>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
