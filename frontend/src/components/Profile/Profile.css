@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container-profile {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
+
+.user-profile-container {
+  width: 600px;
+  height: 400px; 
+  padding: 20px;
+  background: var(--text-color);
+  border-radius: 10px;
+  text-align: center; 
+}
+
+.user-profile-container h1{
+  font-family: "Inter", sans-serif;
+  font-weight: normal;
+  outline: none;
+  color: var(--background-color);
+}
+
+
+.user-profile-form {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  outline: none;
+}
+
+.user-profile-form label {
+  text-align: left; 
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  
+}
+
+.user-profile-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.user-profile-button {
+  padding: 10px;
+  margin-top: 10px;
+  background: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+}
+
+.user-profile-button:hover{
+  background-color: #348e91;
+}
+
+/* Mensagem de erro */
+.error-message {
+  color: #d32f2f;
+  background-color: #fdecea;
+  border: 1px solid #d32f2f;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+/* Mensagem de sucesso */
+.success-message {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  border: 1px solid #2e7d32;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+/* Mensagem de carregamento */
+.loading-message {
+  color: #1976d2;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
