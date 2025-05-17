@@ -8,6 +8,10 @@ import Editora from './components/Editora/Editora.js';
 import Livro from './components/Livro/Livro.js';
 import Home from './components/Home/Home.js';
 import Profile from './components/Profile/Profile.js';
+import Produtos from './components/produtos/produtos.js';
+import ProdutosForm from './components/produtos/produtosForm/ProdutosForm.js';
+import Categorias from './components/Categorias/Categorias.js';
+import CategoriasForm from './components/Categorias/CategoriasForm/CategoriasForm.js';
 import Login from './components/Login/LoginUser.js'
 import Register from './components/Login/RegisterUser.js';
 import LivroForm from './components/Livro/LivroForm/LivroForm.js';
@@ -49,7 +53,7 @@ function App() {
     <ThemeProvider>
       <ThemeToggle />
       <Router>
-        <HeaderWrapper /> {/* Coloca o HeaderWrapper aqui para usar useLocation */}
+        <HeaderWrapper /> 
 
         <Routes>
           {/* Rotas públicas */}
@@ -62,6 +66,12 @@ function App() {
           <Route path="/editora" element={<ProtectedRoute><Editora /></ProtectedRoute>} />
           <Route path="/livro" element={<ProtectedRoute><Livro /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>} />
+          <Route path='/produtosform' element={<ProtectedRoute><ProdutosForm /></ProtectedRoute>} />
+          <Route path='/produtosform/:id' element={<ProtectedRoute><ProdutosForm /></ProtectedRoute>} />
+          <Route path="/categorias" element={<ProtectedRoute><Categorias /></ProtectedRoute>} />
+          <Route path="/categoriasform" element={<ProtectedRoute><CategoriasForm /></ProtectedRoute>} />
+          <Route path="/categoriasform/:id" element={<ProtectedRoute><CategoriasForm /></ProtectedRoute>} />
           <Route path='/editoraform' element={<ProtectedRoute><EditoraForm /></ProtectedRoute>} />
           <Route path='/editoraform/:id' element={<ProtectedRoute><EditoraForm /></ProtectedRoute>} />
           <Route path='/livrosform' element={<ProtectedRoute><LivroForm /></ProtectedRoute>} />

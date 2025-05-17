@@ -7,6 +7,9 @@ const livroRoutes = require('./src/routes/livroRoutes.js')
 const alunoRoutes = require('./src/routes/alunoRoutes.js')
 const emprestimoRoutes = require('./src/routes/emprestimoRoutes.js')
 
+const produtoRoutes = require('./src/routes/produtoRoutes.js');
+const categoriaRoutes = require('./src/routes/categoriaRoutes.js');
+
 const app = express();
 
 app.use(cors({
@@ -21,6 +24,10 @@ app.use('/api/editoras', editoraRoutes);
 app.use('/api/livros', livroRoutes);
 app.use('/api/alunos', alunoRoutes);
 app.use('/api/emprestimos', emprestimoRoutes);
+
+app.use('/api/produtos', produtoRoutes);
+app.use('/api/categorias', categoriaRoutes);
+
 
 app.listen(8090, '0.0.0.0', () => {
     console.log('Servidor rodando na porta 8090');

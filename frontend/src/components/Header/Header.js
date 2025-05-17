@@ -61,7 +61,7 @@ const Header = () => {
 
             {/* Logo */}
             <div className="logo">
-                <h1>Sistema de Livraria</h1>
+                <h1>Sistema de ecommerce</h1>
             </div>
 
             {/* Navbar padrão (desktop) */}
@@ -89,6 +89,7 @@ const Header = () => {
                     {isDropdownOpen && (
                         <div className="dropdown-menu">
                             <Link to="/profile" className="dropdown-link">Ver Perfil</Link>
+                            <Link to="/produtos" className="dropdown-link">Meus Produtos</Link>
                             <button onClick={handleLogout}>Logout</button>
                         </div>
                     )}
