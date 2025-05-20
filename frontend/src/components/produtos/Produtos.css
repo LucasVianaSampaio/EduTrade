@@ -6,7 +6,7 @@ body {
     background-color: var(--background-color);
 }
 
-.editora-container {
+.produto-container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -15,14 +15,14 @@ body {
     margin-top: 200px;
 }
 
-.editora-title {
+.produto-title {
     font-size: 1.8rem;
     color: var(--background-color);
     margin-bottom: 20px;
     font-family: sans-serif;
 }
 
-.editora-btn-new {
+.produto-btn-new {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
@@ -34,18 +34,18 @@ body {
     float: right;
 }
 
-.editora-btn-new:hover {
+.produto-btn-new:hover {
     background-color: #01fb9f9d;
 }
 
-.editora-filter {
+.produto-filter {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     align-items: center;
 }
 
-.editora-filter input {
+.produto-filter input {
     padding: 10px;
     font-size: 1rem;
     border: 2px solid #002a30;
@@ -56,42 +56,42 @@ body {
 
 }
 
-.editora-filter input:focus {
+.produto-filter input:focus {
     outline: none;
     border-color: #01fb9f9d;
     box-shadow: 0 0 4px rgba(59, 157, 86, 0.3);
 }
 
 
-.editora-filter span {
+.produto-filter span {
     font-size: 18px;
     font-weight: 500;
     color: var(--background-color);
 }
 
-.editora-list {
+.produto-list {
     margin-top: 20px;
 }
 
-.editora-table {
+.produto-table {
     width: 100%;
 }
 
-.editora-table th,
-.editora-table td {
+.produto-table th,
+.produto-table td {
     padding: 8px;
     border: 1px solid var(--background-color);
     text-align: left;
     color: var(--background-color);
 }
 
-.editora-table th {
+.produto-table th {
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
-.editora-btn-edit,
-.editora-btn-delete {
+.produto-btn-edit,
+.produto-btn-delete {
     padding: 8px 12px;
     font-size: 1rem;
     border-radius: 4px;
@@ -99,61 +99,61 @@ body {
     margin-right: 10px;
 }
 
-.editora-btn-edit {
+.produto-btn-edit {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
 }
 
-.editora-btn-edit:hover {
+.produto-btn-edit:hover {
     background-color: #01fb9f9d;
 }
 
-.editora-btn-delete {
+.produto-btn-delete {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
 }
 
-.editora-btn-delete:hover {
+.produto-btn-delete:hover {
     background-color: #d32f2f;
 }
 
-.editora-pagination {
+.produto-pagination {
     margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.pagination-info-editora {
+.pagination-info-produto {
     margin-top: 20px;
     text-align: center;
 }
 
-.editora-pagination {
+.produto-pagination {
     font-size: 20px;
     color: var(--background-color);
     font-weight: 500;
 }
 
-.label-editora-pagination {
+.label-produto-pagination {
     color: var(--background-color);
 }
 
-.pagination-info-editora span {
+.pagination-info-produto span {
     font-size: 20px;
     color: var(--background-color);
     font-weight: 500;
 }
 
-.pagination-buttons-editora {
+.pagination-buttons-produto {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.pagination-buttons-editora button {
+.pagination-buttons-produto button {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
@@ -163,7 +163,7 @@ body {
     cursor: pointer;
 }
 
-.pagination-buttons-editora button:hover {
+.pagination-buttons-produto button:hover {
     background-color: #01fb9f9d;
     
 }

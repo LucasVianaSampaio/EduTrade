@@ -8,7 +8,7 @@ body {
     color: var(--text-color);
 }
 
-.editoraform-container {
+.produtoform-container {
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -17,7 +17,7 @@ body {
     padding: 20px; 
 }
 
-.form-container-editoraform {
+.form-container-produtoform {
     width: 100%;  
     max-width: 600px; 
     padding: 30px;
@@ -26,24 +26,24 @@ body {
     box-shadow: 0px 4px 10px rgba(228, 222, 222, 0.1);
 }
 
-.form-title-editoraform {
+.form-title-produtoform {
     font-size: 2rem; 
     color: var(--background-color);
     text-align: center;
 }
 
-.form-group-editoraform {
+.form-group-produtoform {
     margin-bottom: 15px;
 }
 
-.form-group-editoraform label {
+.form-group-produtoform label {
     font-size: 1.1rem;
     color: var(--background-color);
     display: block;
     margin-bottom: 8px;
 }
 
-.form-group-editoraform input {
+.form-group-produtoform input {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -52,13 +52,13 @@ body {
     box-sizing: border-box;
 }
 
-.form-group-editoraform input:focus {
+.form-group-produtoform input:focus {
     outline: none;
     border-color: #01fb9f9d;
     box-shadow: 0 0 4px rgba(59, 157, 86, 0.3);
 }
 
-.form-button-editoraform {
+.form-button-produtoform {
     background-color: var(--background-color);
     color: var(--text-color);
     padding: 12px 20px;
@@ -71,15 +71,15 @@ body {
     transition: background-color 0.3s;
 }
 
-.form-button-editoraform:hover {
+.form-button-produtoform:hover {
     background-color: #01fb9f9d;
 }
 
-.form-button-editoraform:active {
+.form-button-produtoform:active {
     background-color: #01fb9f9d;
 }
 
-.form-button-cancel-editoraform {
+.form-button-cancel-produtoform {
     background-color: var(--background-color);
     color: var(--text-color);
     padding: 12px 20px;
@@ -92,11 +92,11 @@ body {
     transition: background-color 0.3s;
 }
 
-.form-button-cancel-editoraform:hover {
+.form-button-cancel-produtoform:hover {
     background-color: #ea24249d;
 }
 
-.form-button-cancel-editoraform:active {
+.form-button-cancel-produtoform:active {
     background-color: #ea24249d;
 }
 

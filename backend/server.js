@@ -20,6 +20,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
+
 app.use('/api/editoras', editoraRoutes);
 app.use('/api/livros', livroRoutes);
 app.use('/api/alunos', alunoRoutes);

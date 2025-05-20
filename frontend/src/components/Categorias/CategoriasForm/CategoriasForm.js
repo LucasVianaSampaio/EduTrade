@@ -16,9 +16,9 @@ const ProdutosForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const fetchCategoryData = useCallback(async (editoraId) => {
+  const fetchCategoryData = useCallback(async (categoriaId) => {
     try {
-      const data = await getCategoriaById(editoraId);
+      const data = await getCategoriaById(categoriaId);
       if (data) {
         setFormData({
           nome: data.nome || "",
@@ -80,12 +80,9 @@ const ProdutosForm = () => {
   };
 
   return (
-    <div className="editoraform-container">
-      <div className="form-container-editoraform">
-        {/* <Helmet>
-          <title>Sistema de Gerenciamento de Biblioteca</title>
-        </Helmet> */}
-        <h2 className="form-title-editoraform">
+    <div className="categoriaform-container">
+      <div className="form-container-categoriaform">
+        <h2 className="form-title-categoriaform">
           {isEditing ? "Editar Categoria" : "Cadastrar Categoria"}
         </h2>
 
@@ -93,7 +90,7 @@ const ProdutosForm = () => {
         {successMessage && <p className="success-message">{successMessage}</p>}
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group-editoraform">
+          <div className="form-group-categoriaform">
             <label htmlFor="nome">Nome</label>
             <input
               type="text"
@@ -106,7 +103,7 @@ const ProdutosForm = () => {
             />
           </div>
 
-          <div className="form-group-editoraform">
+          <div className="form-group-categoriaform">
             <label htmlFor="descricao">Descrição</label>
             <input
               type="text"
@@ -121,13 +118,13 @@ const ProdutosForm = () => {
 
           <button
             type="submit"
-            className="form-button-editoraform"
+            className="form-button-categoriaform"
             disabled={loading}
           >
             {loading ? "Salvando..." : isEditing ? "Atualizar" : "Cadastrar"}
           </button>
           <button
-            className="form-button-cancel-editoraform"
+            className="form-button-cancel-categoriaform"
             onClick={handleBack}
           >
             Cancelar

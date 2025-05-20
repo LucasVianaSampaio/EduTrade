@@ -6,7 +6,7 @@ body {
     background-color: var(--background-color);
 }
 
-.editora-container {
+.categoria-container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -15,14 +15,14 @@ body {
     margin-top: 200px;
 }
 
-.editora-title {
+.categoria-title {
     font-size: 1.8rem;
     color: var(--background-color);
     margin-bottom: 20px;
     font-family: sans-serif;
 }
 
-.editora-btn-new {
+.categoria-btn-new {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
@@ -34,18 +34,18 @@ body {
     float: right;
 }
 
-.editora-btn-new:hover {
+.categoria-btn-new:hover {
     background-color: #01fb9f9d;
 }
 
-.editora-filter {
+.categoria-filter {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     align-items: center;
 }
 
-.editora-filter input {
+.categoria-filter input {
     padding: 10px;
     font-size: 1rem;
     border: 2px solid #002a30;
@@ -56,42 +56,42 @@ body {
 
 }
 
-.editora-filter input:focus {
+.categoria-filter input:focus {
     outline: none;
     border-color: #01fb9f9d;
     box-shadow: 0 0 4px rgba(59, 157, 86, 0.3);
 }
 
 
-.editora-filter span {
+.categoria-filter span {
     font-size: 18px;
     font-weight: 500;
     color: var(--background-color);
 }
 
-.editora-list {
+.categoria-list {
     margin-top: 20px;
 }
 
-.editora-table {
+.categoria-table {
     width: 100%;
 }
 
-.editora-table th,
-.editora-table td {
+.categoria-table th,
+.categoria-table td {
     padding: 8px;
     border: 1px solid var(--background-color);
     text-align: left;
     color: var(--background-color);
 }
 
-.editora-table th {
+.categoria-table th {
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
-.editora-btn-edit,
-.editora-btn-delete {
+.categoria-btn-edit,
+.categoria-btn-delete {
     padding: 8px 12px;
     font-size: 1rem;
     border-radius: 4px;
@@ -99,61 +99,61 @@ body {
     margin-right: 10px;
 }
 
-.editora-btn-edit {
+.categoria-btn-edit {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
 }
 
-.editora-btn-edit:hover {
+.categoria-btn-edit:hover {
     background-color: #01fb9f9d;
 }
 
-.editora-btn-delete {
+.categoria-btn-delete {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
 }
 
-.editora-btn-delete:hover {
+.categoria-btn-delete:hover {
     background-color: #d32f2f;
 }
 
-.editora-pagination {
+.categoria-pagination {
     margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.pagination-info-editora {
+.pagination-info-categoria {
     margin-top: 20px;
     text-align: center;
 }
 
-.editora-pagination {
+.categoria-pagination {
     font-size: 20px;
     color: var(--background-color);
     font-weight: 500;
 }
 
-.label-editora-pagination {
+.label-categoria-pagination {
     color: var(--background-color);
 }
 
-.pagination-info-editora span {
+.pagination-info-categoria span {
     font-size: 20px;
     color: var(--background-color);
     font-weight: 500;
 }
 
-.pagination-buttons-editora {
+.pagination-buttons-categoria {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.pagination-buttons-editora button {
+.pagination-buttons-categoria button {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
@@ -163,7 +163,7 @@ body {
     cursor: pointer;
 }
 
-.pagination-buttons-editora button:hover {
+.pagination-buttons-categoria button:hover {
     background-color: #01fb9f9d;
     
 }

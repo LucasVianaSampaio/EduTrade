@@ -26,9 +26,9 @@ const ProdutosForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [categorias, setCategorias] = useState([]);
 
-  const fetchProductData = useCallback(async (editoraId) => {
+  const fetchProductData = useCallback(async (produtoId) => {
     try {
-      const data = await getProdutoById(editoraId);
+      const data = await getProdutoById(produtoId);
       if (data) {
         setFormData({
           titulo: data.titulo || "",
@@ -94,7 +94,7 @@ const ProdutosForm = () => {
         await createProduto(payload);
         setSuccessMessage("produto cadastrado com sucesso!");
       }
-      setTimeout(() => navigate("/profile/produtos"), 2000);
+      setTimeout(() => navigate("/produtos"), 2000);
     } catch (error) {
       setErrorMessage(
         error.response?.data?.message || "Erro ao salvar produto."
@@ -113,12 +113,9 @@ const ProdutosForm = () => {
   };
 
   return (
-    <div className="editoraform-container">
-      <div className="form-container-editoraform">
-        {/* <Helmet>
-          <title>Sistema de Gerenciamento de Biblioteca</title>
-        </Helmet> */}
-        <h2 className="form-title-editoraform">
+    <div className="produtoform-container">
+      <div className="form-container-produtoform">
+        <h2 className="form-title-produtoform">
           {isEditing ? "Editar Produto" : "Cadastrar Produto"}
         </h2>
 
@@ -126,7 +123,7 @@ const ProdutosForm = () => {
         {successMessage && <p className="success-message">{successMessage}</p>}
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group-editoraform">
+          <div className="form-group-produtoform">
             <label htmlFor="nome">Nome</label>
             <input
               type="text"
@@ -139,7 +136,7 @@ const ProdutosForm = () => {
             />
           </div>
 
-          <div className="form-group-editoraform">
+          <div className="form-group-produtoform">
             <label htmlFor="preco">Preço</label>
             <input
               type="number"
@@ -154,7 +151,7 @@ const ProdutosForm = () => {
             />
           </div>
 
-          <div className="form-group-editoraform">
+          <div className="form-group-produtoform">
             <label htmlFor="categoria">Categoria</label>
             <select
               id="categoriaId"
@@ -172,7 +169,7 @@ const ProdutosForm = () => {
             </select>
           </div>
 
-          <div className="form-group-editoraform">
+          <div className="form-group-produtoform">
             <label htmlFor="descricao">Descrição</label>
             <input
               type="text"
@@ -187,13 +184,13 @@ const ProdutosForm = () => {
 
           <button
             type="submit"
-            className="form-button-editoraform"
+            className="form-button-produtoform"
             disabled={loading}
           >
             {loading ? "Salvando..." : isEditing ? "Atualizar" : "Cadastrar"}
           </button>
           <button
-            className="form-button-cancel-editoraform"
+            className="form-button-cancel-produtoform"
             onClick={handleBack}
           >
             Cancelar

@@ -60,26 +60,26 @@ const Produtos = () => {
     };
 
     return (
-        <div className="editora-container">
-            <h2 className="editora-title">Relação de Categorias</h2>
+        <div className="categoria-container">
+            <h2 className="categoria-title">Relação de Categorias</h2>
 
             <Link to="/categoriasform">
-                <button className="editora-btn-new">Nova Categoria</button>
+                <button className="categoria-btn-new">Nova Categoria</button>
             </Link>
 
             {errorMessage && <p className="error-message">{errorMessage}</p>} 
             {successMessage && <p className="success-message">{successMessage}</p>}
 
-            <div className="editora-filter">
+            <div className="categoria-filter">
                 <span>Pesquisar</span>
                 <input type="text" name="nome" placeholder="Buscar por nome" value={filters.nome} onChange={handleFilterChange} />
                 <input type="email" name="emailContato" placeholder="Buscar por e-mail" value={filters.emailContato} onChange={handleFilterChange} />
                 <input ref={cnpjInputRef} type="text" name="cnpj" placeholder="Buscar por CNPJ" value={filters.cnpj} onChange={handleFilterChange} />
             </div>
 
-            <div className="editora-list">
-                <div className="editora-table-wrapper">
-                    <table className="editora-table">
+            <div className="categoria-list">
+                <div className="categoria-table-wrapper">
+                    <table className="categoria-table">
                         <thead>
                             <tr>
                                 <th>Nome</th>
@@ -94,9 +94,9 @@ const Produtos = () => {
                                     <td>{categoria.descricao}</td>
                                     <td>
                                         <Link to={`/CategoriasForm/${categoria.id}`}>
-                                            <button className="editora-btn-edit">Editar</button>
+                                            <button className="categoria-btn-edit">Editar</button>
                                         </Link>
-                                        <button className="editora-btn-delete" onClick={() => handleDelete(categoria.id)}>Excluir</button>
+                                        <button className="categoria-btn-delete" onClick={() => handleDelete(categoria.id)}>Excluir</button>
                                     </td>
                                 </tr>
                             ))}
@@ -105,9 +105,9 @@ const Produtos = () => {
                 </div>
             </div>
 
-            <div className="editora-pagination">
+            <div className="categoria-pagination">
                 <p>Total: {totalRecords}</p>
-                <label className="label-editora-pagination">
+                <label className="label-categoria-pagination">
                     Registros por página:
                     <select value={limit} onChange={handleLimitChange}>
                         <option value="5">5</option>
@@ -118,11 +118,11 @@ const Produtos = () => {
                 </label>
             </div>
 
-            <div className="pagination-info-editora">
+            <div className="pagination-info-categoria">
                 <span>
                     Mostrando de {((page - 1) * limit) + 1} até {Math.min(page * limit, totalRecords)} de {totalRecords} registros
                 </span>
-                <div className="pagination-buttons-editora">
+                <div className="pagination-buttons-categoria">
                     <button onClick={() => setPage(Math.max(page - 1, 1))}>Anterior</button>
                     <span>Página {page}</span>
                     <button onClick={() => setPage(Math.min(page + 1, Math.ceil(totalRecords / limit)))}>Próxima</button>
