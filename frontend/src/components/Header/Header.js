@@ -52,10 +52,8 @@ const Header = () => {
             <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
                 <ul>
                     <li><Link to="/home" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
-                    <li><Link to="/editora" onClick={() => setIsMobileMenuOpen(false)}>Editoras</Link></li>
-                    <li><Link to="/livro" onClick={() => setIsMobileMenuOpen(false)}>Livros</Link></li>
-                    <li><Link to="/emprestimo">Emprestimo</Link></li>
-                    <li><Link to="/aluno">Aluno</Link></li>
+                    <li><Link to="/produtos" onClick={() => setIsMobileMenuOpen(false)}>Produtos</Link></li>
+                    <li><Link to="/categorias" onClick={() => setIsMobileMenuOpen(false)}>Categorias</Link></li>
                 </ul>
             </nav>
 
@@ -69,10 +67,8 @@ const Header = () => {
                 <nav className="nav">
                     <ul>
                         <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/editora">Editoras</Link></li>
-                        <li><Link to="/livro">Livros</Link></li>
-                        <li><Link to="/emprestimo">Emprestimo</Link></li>
-                        <li><Link to="/aluno">Aluno</Link></li>
+                        <li><Link to="/produtos">Produtos</Link></li>
+                        <li><Link to="/categorias">Categorias</Link></li>
                     </ul>
                 </nav>
             </div>

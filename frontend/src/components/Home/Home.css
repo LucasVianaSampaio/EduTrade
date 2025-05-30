@@ -9,7 +9,6 @@
     margin-top: 200px;
 }
 
-/* Título principal */
 .home-title {
     color: var(--title-color-home);
     font-size: 32px;
@@ -17,7 +16,7 @@
 }
 
 /* Barra de Pesquisa */
-.home-search {
+/* .home-search {
     width: 60%;
     max-width: 400px;
     padding: 10px;
@@ -25,9 +24,9 @@
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 20px;
-}
+} */
 
-/* Livros em Destaque */
+
 .home-featured {
     background-color: var(--div-color-featured);
     padding: 20px;
@@ -74,7 +73,6 @@
     margin-bottom: 20px;
 }
 
-/* Categorias Populares */
 .home-categories {
     margin-bottom: 20px;
 }
@@ -106,7 +104,6 @@
     background-color: #006400;
 }
 
-/* Mensagem de erro */
 .error-message {
     color: #d32f2f;
     background-color: #fdecea;
@@ -120,7 +117,6 @@
     animation: fadeIn 1s forwards;
 }
 
-/* Mensagem de sucesso */
 .success-message {
     color: #2e7d32;
     background-color: #e8f5e9;
@@ -134,7 +130,6 @@
     animation: fadeIn 1s forwards;
 }
 
-/* Mensagem de carregamento */
 .loading-message {
     color: #1976d2;
     font-size: 1.2em;
@@ -144,7 +139,6 @@
     animation: fadeIn 1s forwards;
 }
 
-/* Responsividade */
 @media screen and (max-width: 768px) {
     .home-page-container {
         margin: 0 auto;

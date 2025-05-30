@@ -1,72 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import { getLivrosByFilters } from '../../services/livrosService';
-import { getBookCover } from '../../services/livrosService';  // Importa a função para pegar as capas
-import './Home.css';
+import { useEffect, useState, useCallback } from "react";
+import { getProdutosByFilters } from "../../services/produtosService";
+import { getCategoriasByFilters } from "../../services/categoriasService";
+
+import "./Home.css";
 
 const Home = () => {
-    const [featuredBooks, setFeaturedBooks] = useState([]);
-    const [bookCovers, setBookCovers] = useState({});
-    const categories = ["Ficção", "Não-Ficção", "Fantasias", "Romances", "Terror", "Ciência"];
+  const [produtos, setProdutos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-    useEffect(() => {
-        document.title = "Sistema de Gerenciamento de Biblioteca";
-        fetchFeaturedBooks();
-    }, []);
+  const fetchProdutos = useCallback(async () => {
+    try {
+      const data = await getProdutosByFilters();
+      setProdutos(data);
+    } catch (error) {
+      setErrorMessage(
+        error.response?.data?.message || "Erro ao carregar produtos."
+      );
+      clearMessages();
+    }
+  }, []);
 
-    const fetchFeaturedBooks = async () => {
-        try {
-            const data = await getLivrosByFilters({}, 1, 5);
-            setFeaturedBooks(data.data);
+  const fetchCategorias = useCallback(async () => {
+    try {
+      const data = await getCategoriasByFilters();
+      setCategorias(data);
+    } catch (error) {
+      setErrorMessage(
+        error.response?.data?.message || "Erro ao carregar categorias."
+      );
+      clearMessages();
+    }
+  }, []);
 
-            // Buscar as capas dos livros
-            const covers = {};
-            for (const book of data.data) {
-                const coverUrl = await getBookCover(book.isbn);
-                covers[book.isbn] = coverUrl;
-            }
-            setBookCovers(covers);
+  useEffect(() => {
+    document.title = "EduTrade - Compra e Venda de materiais";
+    fetchProdutos();
+    fetchCategorias();
+  }, [fetchProdutos, fetchCategorias]);
 
-        } catch (error) {
-            console.error("Erro ao buscar livros em destaque", error);
-        }
-    };
+  const clearMessages = () => {
+    setTimeout(() => {
+      setErrorMessage("");
+    }, 3000);
+  };
 
-    return (
-        <div className="home-page-container">
-            <h2 className="home-title">Bem-vindo à Biblioteca</h2>
-            
-            {/* Livros em Destaque */}
-            <div className="home-featured">
-                <h3>Livros em Destaque</h3>
-                <ul>
-                    {featuredBooks.length > 0 ? (
-                        featuredBooks.map(book => (
-                            <li key={book.id}>
-                                <img 
-                                    src={bookCovers[book.isbn] || 'https://placehold.co/200x300'} 
-                                    alt={book.titulo} 
-                                    style={{ width: '100px', height: '150px', objectFit: 'cover' }} 
-                                />
-                                {book.titulo} - {book.autor?.nome || "Autor desconhecido"}
-                            </li>
-                        ))
-                    ) : (
-                        <p>Nenhum livro em destaque encontrado.</p>
-                    )}
-                </ul>
-            </div>
-            
-            {/* Categorias */}
-            <div className="home-categories">
-                <h3>Categorias Populares</h3>
-                <div className="categories-list">
-                    {categories.map((category, index) => (
-                        <span key={index} className="category">{category}</span>
-                    ))}
-                </div>
-            </div>
+  return (
+    <div className="home-page-container">
+      <h2 className="home-title">Bem-vindo ao EduTrade</h2>
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      <div className="home-featured">
+        <h3>Lista de Produtos</h3>
+        <ul>
+          {produtos.length > 0 ? (
+            produtos.map((produto) => (
+              <li key={produto.id}>
+                <img
+                  src={"https://img.olx.com.br/images/12/123546280105650.jpg"}
+                  alt={produto.titulo}
+                  style={{
+                    width: "100px",
+                    height: "150px",
+                    objectFit: "cover",
+                  }}
+                />
+                {produto.titulo} - {`R$${produto.preco}`}
+              </li>
+            ))
+          ) : (
+            <p>Nenhum produto em destaque encontrado.</p>
+          )}
+        </ul>
+      </div>
+
+      <div className="home-categories">
+        <h3>Categorias Populares</h3>
+        <div className="categories-list">
+          {categorias.map((categoria, index) => (
+            <span key={index} className="category">
+              {categoria.nome}
+            </span>
+          ))}
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default Home;
