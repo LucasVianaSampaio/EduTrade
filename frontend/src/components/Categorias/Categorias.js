@@ -1,18 +1,16 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getCategoriasByFilters, deleteCategoria } from "../../services/categoriasService"
 import { Link } from "react-router-dom";
 import "./Categorias.css";
 
 const Produtos = () => {
     const [categorias, setCategorias] = useState([]);
-    const [filters, setFilters] = useState({ nome: "", emailContato: "", cnpj: "" });
+    const [filters, setFilters] = useState({ nome: ""});
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
     const [totalRecords, setTotalRecords] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
-
-    const cnpjInputRef = useRef(null);
 
     const fetchCategorias = useCallback(async () => {
         try {
@@ -73,8 +71,6 @@ const Produtos = () => {
             <div className="categoria-filter">
                 <span>Pesquisar</span>
                 <input type="text" name="nome" placeholder="Buscar por nome" value={filters.nome} onChange={handleFilterChange} />
-                <input type="email" name="emailContato" placeholder="Buscar por e-mail" value={filters.emailContato} onChange={handleFilterChange} />
-                <input ref={cnpjInputRef} type="text" name="cnpj" placeholder="Buscar por CNPJ" value={filters.cnpj} onChange={handleFilterChange} />
             </div>
 
             <div className="categoria-list">
