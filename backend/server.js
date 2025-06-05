@@ -2,10 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./src/routes/userRoutes.js');
-const editoraRoutes = require('./src/routes/editoraRoutes.js')
-const livroRoutes = require('./src/routes/livroRoutes.js')
-const alunoRoutes = require('./src/routes/alunoRoutes.js')
-const emprestimoRoutes = require('./src/routes/emprestimoRoutes.js')
 
 const produtoRoutes = require('./src/routes/produtoRoutes.js');
 const categoriaRoutes = require('./src/routes/categoriaRoutes.js');
