@@ -4,8 +4,8 @@ const API_URL = "http://localhost:8090";
 
 export const getProdutosByFilters = async () => {
     try {
-        const res = await axios.get(`${API_URL}/api/produtos/`);
-        return res.data;
+        const response = await axios.get(`${API_URL}/api/produtos/`);
+        return response.data;
     } catch (error) {
         console.error("Erro ao buscar produtos", error);
         return { data: [], total: 0 };
@@ -14,8 +14,8 @@ export const getProdutosByFilters = async () => {
 
 export const getProdutoById = async (id) => {
     try {
-        const res = await axios.get(`${API_URL}/api/produtos/${id}`);
-        return res.data;
+        const response = await axios.get(`${API_URL}/api/produtos/${id}`);
+        return response.data;
     } catch (error) {
         console.error("Erro ao buscar produto por ID", error);
         return null;

@@ -4,8 +4,8 @@ const API_URL = "http://localhost:8090";
 
 export const getCategoriasByFilters = async () => {
     try {
-        const res = await axios.get(`${API_URL}/api/categorias/`);
-        return res.data;
+        const response = await axios.get(`${API_URL}/api/categorias/`);
+        return response.data;
     } catch (error) {
         console.error("Erro ao buscar categoria", error);
         return { data: [], total: 0 };
@@ -14,8 +14,8 @@ export const getCategoriasByFilters = async () => {
 
 export const getCategoriaById = async (id) => {
     try {
-        const res = await axios.get(`${API_URL}/api/categorias/${id}`);
-        return res.data;
+        const response = await axios.get(`${API_URL}/api/categorias/${id}`);
+        return response.data;
     } catch (error) {
         console.error("Erro ao buscar categoria por ID", error);
         return null;

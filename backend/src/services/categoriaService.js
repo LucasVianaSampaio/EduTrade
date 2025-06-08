@@ -1,15 +1,5 @@
 const categoriaRepository = require('../repositories/categoriaRepository');
-
-function gerarSlug(nome) {
-    return nome
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\-\-+/g, '-')
-        .replace(/^-+|-+$/g, '');
-}
+const { gerarSlug } = require('../utils/slugGenerator');
 
 class CategoriaService {
     async criarCategoria(nome, descricao) {
