@@ -1,4 +1,3 @@
-// controllers/categoriaController.js
 const categoriaService = require('../services/categoriaService');
 
 async function createCategoria(req, res) {

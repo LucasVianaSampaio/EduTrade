@@ -1,7 +1,5 @@
-// services/categoriaService.js
 const categoriaRepository = require('../repositories/categoriaRepository');
 
-// Função para gerar slug a partir do nome
 function gerarSlug(nome) {
     return nome
         .toLowerCase()
