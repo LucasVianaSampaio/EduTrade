@@ -21,6 +21,10 @@ model User {
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  
+  // Relacionamentos
+  carrinhoItens CarrinhoItem[]
+  pedidos      Pedido[]
 }
 
 model Produto {
@@ -34,6 +38,10 @@ model Produto {
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  
+  // Relacionamentos
+  carrinhoItens CarrinhoItem[]
+  pedidoItens   PedidoItem[]
 }
 
 model Categoria {
@@ -45,4 +53,51 @@ model Categoria {
   produtos    Produto[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+}
+
+// Modelo para itens do carrinho
+model CarrinhoItem {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  produtoId Int
+  quantidade Int     @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relacionamentos
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  produto Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, produtoId])
+}
+
+// Modelo para pedidos
+model Pedido {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  status      String   @default("PENDENTE") // PENDENTE, APROVADO, CANCELADO, ENTREGUE
+  total       Float
+  endereco    String
+  telefone    String
+  observacoes String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relacionamentos
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pedidoItens PedidoItem[]
+}
+
+// Modelo para itens do pedido
+model PedidoItem {
+  id        Int      @id @default(autoincrement())
+  pedidoId  Int
+  produtoId Int
+  quantidade Int
+  precoUnitario Float
+  createdAt DateTime @default(now())
+  
+  // Relacionamentos
+  pedido  Pedido  @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  produto Produto @relation(fields: [produtoId], references: [id])
 }
