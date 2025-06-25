@@ -7,8 +7,9 @@ const {
 
 
 const router = express.Router();
+const { authenticateToken } = require('../middlewares/authMiddleware');
 
-router.post('/', criarPedido);
-router.get('/', buscarPedidosPorUsuario);
+router.post('/', authenticateToken, criarPedido);
+router.get('/', authenticateToken, buscarPedidosPorUsuario);
 
 module.exports = router; 

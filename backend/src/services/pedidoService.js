@@ -3,20 +3,16 @@ const carrinhoRepository = require('../repositories/carrinhoRepository');
 
 class PedidoService {
   async criarPedido(userId, dadosPedido) {
-    // Pega os itens do carrinho
-    const itensCarrinho = await carrinhoRepository.obterCarrinho(userId);
+    const itensCarrinho = await carrinhoRepository.listarItensDoCarrinho(userId);
     if (!itensCarrinho.length) throw new Error('Carrinho vazio');
 
-    // Calcula o total
     const total = itensCarrinho.reduce((acc, item) => acc + item.produto.preco * item.quantidade, 0);
 
-    // Cria o pedido
     const pedido = await pedidoRepository.criarPedido(userId, {
       ...dadosPedido,
       total
     });
 
-    // Adiciona os itens ao pedido
     await pedidoRepository.adicionarItensAoPedido(
       pedido.id,
       itensCarrinho.map(item => ({
@@ -26,7 +22,6 @@ class PedidoService {
       }))
     );
 
-    // Limpa o carrinho
     await carrinhoRepository.limparCarrinho(userId);
 
     return pedido;

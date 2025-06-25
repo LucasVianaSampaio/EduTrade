@@ -1,22 +1,29 @@
 const pedidoService = require('../services/pedidoService');
 
-exports.criarPedido = async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const dadosPedido = req.body;
-    const pedido = await pedidoService.criarPedido(userId, dadosPedido);
-    res.json(pedido);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
+async function criarPedido(req, res) {
+    try {
+        const userId = req.user.id;
+        const dadosPedido = req.body;
+        const pedido = await pedidoService.criarPedido(userId, dadosPedido);
+        return res.json(pedido);
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ message: error.message });
+    }
+}
 
-exports.buscarPedidosPorUsuario = async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const pedidos = await pedidoService.buscarPedidosPorUsuario(userId);
-    res.json(pedidos);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-}; 
+async function buscarPedidosPorUsuario(req, res) {
+    try {
+        const userId = req.user.id;
+        const pedidos = await pedidoService.buscarPedidosPorUsuario(userId);
+        return res.json(pedidos);
+    } catch (error) {
+        console.error(error);
+        return res.status(400).json({ message: error.message });
+    }
+}
+
+module.exports = {
+    criarPedido,
+    buscarPedidosPorUsuario
+};

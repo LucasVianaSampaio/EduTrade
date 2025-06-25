@@ -52,7 +52,6 @@ class PedidoRepository {
     }
   }
 
-  // Buscar pedidos de um usuário
   async buscarPedidosPorUsuario(userId) {
     try {
       return await prisma.pedido.findMany({
@@ -72,4 +71,4 @@ class PedidoRepository {
   }
 }
 
-module.exports = PedidoRepository; 
+module.exports = new PedidoRepository(); 
