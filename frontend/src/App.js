@@ -10,7 +10,9 @@ import Produtos from './components/produtos/produtos.js';
 import ProdutosForm from './components/produtos/produtosForm/ProdutosForm.js';
 import Categorias from './components/Categorias/Categorias.js';
 import CategoriasForm from './components/Categorias/CategoriasForm/CategoriasForm.js';
-import Login from './components/Login/LoginUser.js'
+import Carrinho from './components/Carrinho/Carrinho.js';
+import Pedido from './components/Pedido/Pedido.js'
+import Login from './components/Login/LoginUser.js';
 import Register from './components/Login/RegisterUser.js';
 import PageNotFound from './components/NotFound/NotFound.js';
 import { ThemeProvider } from './components/ThemeToggle/ThemeContext.js';
@@ -60,6 +62,8 @@ function App() {
           <Route path='/produtosform/:id' element={<ProtectedRoute><ProdutosForm /></ProtectedRoute>} />
           <Route path="/categorias" element={<ProtectedRoute><Categorias /></ProtectedRoute>} />
           <Route path="/categoriasform" element={<ProtectedRoute><CategoriasForm /></ProtectedRoute>} />
+          <Route path="/carrinho" element={<ProtectedRoute><Carrinho/></ProtectedRoute>} />
+          <Route path="/pedido" element={<ProtectedRoute><Pedido/></ProtectedRoute>} />
           <Route path="/categoriasform/:id" element={<ProtectedRoute><CategoriasForm /></ProtectedRoute>} />
           {/* Rota padrão ou erro 404 */}
           <Route path="*" element={<PageNotFound />} />

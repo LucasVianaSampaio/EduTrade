@@ -1,6 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 import { getProdutosByFilters } from "../../services/produtosService";
 import { getCategoriasByFilters } from "../../services/categoriasService";
+import { adicionarItemAoCarrinho } from '../../services/carrinhoService';
 
 import "./Home.css";
 
@@ -9,6 +11,7 @@ const Home = () => {
   const [categorias, setCategorias] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   const fetchProdutos = useCallback(async () => {
     try {
@@ -46,11 +49,23 @@ const Home = () => {
     }, 3000);
   };
 
+  const handleAdicionarCarrinho = async (produtoId) => {
+    try {
+      await adicionarItemAoCarrinho(produtoId, 1);
+      setSuccessMessage('Produto adicionado ao carrinho!');
+      setTimeout(() => setSuccessMessage(''), 2000);
+    } catch (error) {
+      setErrorMessage('Erro ao adicionar ao carrinho.');
+      clearMessages();
+    }
+  };
+
   return (
     <div className="home-page-container">
       <h2 className="home-title">Bem-vindo ao EduTrade</h2>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
 
       <div className="home-featured">
         <h3>Lista de Produtos</h3>
@@ -67,7 +82,22 @@ const Home = () => {
                     objectFit: "cover",
                   }}
                 />
-                {produto.titulo} - {`R$${produto.preco}`}
+                <div className="carrinho-texto">
+                  <div className="carrinho-titulo"><strong>{produto.titulo}</strong></div>
+                  <div className="carrinho-preco">{`R$${produto.preco.toFixed(2)}`}</div>
+                  <button
+                    className="btn-adicionar-carrinho"
+                    onClick={() => handleAdicionarCarrinho(produto.id)}
+                  >
+                    Carrinho
+                  </button>
+                  <button
+                    className="btn-adicionar-carrinho"
+                    onClick={() => navigate('/pedido', { state: { produto, quantidade: 1 } })}
+                  >
+                    Comprar
+                  </button>
+                </div>
               </li>
             ))
           ) : (

@@ -86,6 +86,8 @@ const Header = () => {
                         <div className="dropdown-menu">
                             <Link to="/profile" className="dropdown-link">Ver Perfil</Link>
                             <Link to="/produtos" className="dropdown-link">Meus Produtos</Link>
+                            <Link to="/carrinho" className="dropdown-link">Carrinho de Compras</Link>
+                            <Link to="/pedido" className="dropdown-link">Meus Pedidos</Link>
                             <button onClick={handleLogout}>Logout</button>
                         </div>
                     )}

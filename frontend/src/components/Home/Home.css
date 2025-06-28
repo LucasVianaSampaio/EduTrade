@@ -139,6 +139,22 @@
     animation: fadeIn 1s forwards;
 }
 
+.btn-adicionar-carrinho {
+    margin-top: 10px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-adicionar-carrinho:hover {
+    background-color: #219150;
+}
+
 @media screen and (max-width: 768px) {
     .home-page-container {
         margin: 0 auto;
