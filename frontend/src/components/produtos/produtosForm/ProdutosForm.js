@@ -25,6 +25,8 @@ const ProdutosForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [categorias, setCategorias] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
 
   const fetchProductData = useCallback(async (produtoId) => {
     try {
@@ -38,6 +40,7 @@ const ProdutosForm = () => {
           imagemUrl: data.imagemUrl || "",
           disponivel: data.disponivel || true,
         });
+        setImagePreview(data.imagemUrl || "");
       }
     } catch (error) {
       setErrorMessage(
@@ -72,6 +75,73 @@ const ProdutosForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        setErrorMessage('Por favor, selecione apenas arquivos de imagem.');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        setErrorMessage('A imagem deve ter no máximo 5MB.');
+        return;
+      }
+
+      setSelectedImage(file);
+      
+      compressImage(file).then((compressedDataUrl) => {
+        setImagePreview(compressedDataUrl);
+      });
+    }
+  };
+
+  const convertImageToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const compressImage = (file) => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        const maxWidth = 800;
+        const maxHeight = 600;
+        
+        let { width, height } = img;
+        
+        if (width > height) {
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = (width * maxHeight) / height;
+            height = maxHeight;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+        resolve(compressedDataUrl);
+      };
+      
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
   const handleBack = () => {
     navigate("/produtos");
   };
@@ -80,15 +150,22 @@ const ProdutosForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    const payload = {
-      ...formData,
-      preco: Number(formData.preco),
-      categoriaId: Number(formData.categoriaId),
-    };
-
     try {
+      let imagemUrl = formData.imagemUrl;
+
+      if (selectedImage) {
+        imagemUrl = await compressImage(selectedImage);
+      }
+
+      const payload = {
+        ...formData,
+        preco: Number(formData.preco),
+        categoriaId: Number(formData.categoriaId),
+        imagemUrl: imagemUrl,
+      };
+
       if (isEditing) {
-        await updateProduto(id, formData);
+        await updateProduto(id, payload);
         setSuccessMessage("Produto atualizado com sucesso!");
       } else {
         await createProduto(payload);
@@ -181,6 +258,32 @@ const ProdutosForm = () => {
               required
             />
           </div>
+
+          <div className="form-group-produtoform">
+            <label htmlFor="imagem">Imagem do Produto</label>
+            <input
+              type="file"
+              id="imagem"
+              name="imagem"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="file-input"
+            />
+            <small className="file-help">
+              Selecione uma imagem (máximo 5MB). Formatos aceitos: JPG, PNG, GIF.
+            </small>
+          </div>
+
+          {imagePreview && (
+            <div className="image-preview-container">
+              <label>Prévia da Imagem:</label>
+              <img 
+                src={imagePreview} 
+                alt="Prévia" 
+                className="image-preview"
+              />
+            </div>
+          )}
 
           <button
             type="submit"

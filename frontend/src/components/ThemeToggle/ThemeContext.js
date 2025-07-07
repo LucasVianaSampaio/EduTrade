@@ -3,7 +3,6 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Verifica se há preferência salva no localStorage
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || 'light'
   );

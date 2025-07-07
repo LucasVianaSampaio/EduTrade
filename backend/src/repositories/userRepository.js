@@ -1,4 +1,3 @@
-// repositories/userRepository.js
 const prisma = require('@prisma/client');
 const prismaClient = new prisma.PrismaClient();
 

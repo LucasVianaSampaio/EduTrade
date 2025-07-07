@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8090';
 
-// Função para registrar um novo usuário
 export const register = async (name, cpf, email, password) => {
   try {
     const response = await axios.post(`${API_URL}/api/users/register`, { name, cpf, email, password });
@@ -19,7 +18,6 @@ export const register = async (name, cpf, email, password) => {
   }
 };
 
-// Função para login do usuário
 export const login = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/api/users/login`, { email, password });
@@ -36,17 +34,14 @@ export const login = async (email, password) => {
   }
 };
 
-// Função para obter o perfil do usuário
 export const getProfile = async () => {
   const token = localStorage.getItem('token');
-  
-  // Verifica se o token está presente
+
   if (!token) {
     return { success: false, message: 'Token não encontrado' };
   }
 
   try {
-    // Apenas envia o token como cabeçalho Authorization
     const response = await axios.get(`${API_URL}/api/users/profile`, {
       headers: { 
         Authorization: `Bearer ${token}`,
@@ -65,7 +60,6 @@ export const getProfile = async () => {
   }
 };
 
-// Função para atualizar o perfil do usuário
 export const updateProfile = async (name, cpf, email) => {
   const token = localStorage.getItem('token');
   try {

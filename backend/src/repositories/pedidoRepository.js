@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 class PedidoRepository {
-  // Criar novo pedido
   async criarPedido(userId, dadosPedido) {
     try {
       return await prisma.pedido.create({
@@ -31,7 +30,6 @@ class PedidoRepository {
     }
   }
 
-  // Adicionar itens ao pedido
   async adicionarItensAoPedido(pedidoId, itens) {
     try {
       const createdItems = await Promise.all(

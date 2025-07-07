@@ -137,3 +137,55 @@ body {
     opacity: 0;
     animation: fadeIn 1s forwards;
 }
+
+
+.file-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+.file-input:focus {
+    outline: none;
+    border-color: #01fb9f9d;
+    box-shadow: 0 0 4px rgba(59, 157, 86, 0.3);
+}
+
+.file-help {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.image-preview-container {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.image-preview-container label {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--background-color);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview:hover {
+    border-color: #01fb9f9d;
+    transition: border-color 0.3s ease;
+}

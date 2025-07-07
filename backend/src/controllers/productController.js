@@ -1,4 +1,3 @@
-// controllers/productController.js
 const productService = require('../services/productService');
 
 async function createProduto(req, res) {

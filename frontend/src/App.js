@@ -22,7 +22,6 @@ import './components/ThemeToggle/DarkTheme.css'
 function HeaderWrapper() {
   const location = useLocation();
 
-  // Não exibe o Header nas rotas de Login e Register
   if (location.pathname === '/login' || location.pathname === '/register') {
     return null;
   }
@@ -33,7 +32,6 @@ function HeaderWrapper() {
 function FooterWrapper() {
   const location = useLocation();
 
-  // Não exibe o Footer nas rotas de Login e Register
   if (location.pathname === '/login' || location.pathname === '/register') {
     return null;
   }

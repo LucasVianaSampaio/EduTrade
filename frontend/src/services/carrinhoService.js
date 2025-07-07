@@ -12,7 +12,6 @@ const getAuthHeader = () => {
   };
 };
 
-// Buscar itens do carrinho do usuário logado
 export const getCarrinho = async () => {
   try {
     const response = await axios.get(`${CARRINHO_URL}/`, getAuthHeader());
@@ -23,7 +22,6 @@ export const getCarrinho = async () => {
   }
 };
 
-// Adicionar item ao carrinho
 export const adicionarItemAoCarrinho = async (produtoId, quantidade = 1) => {
   try {
     await axios.post(
@@ -36,7 +34,6 @@ export const adicionarItemAoCarrinho = async (produtoId, quantidade = 1) => {
   }
 };
 
-// Atualizar quantidade de um item no carrinho
 export const atualizarQuantidadeItem = async (produtoId, quantidade) => {
   try {
     await axios.put(
@@ -49,7 +46,6 @@ export const atualizarQuantidadeItem = async (produtoId, quantidade) => {
   }
 };
 
-// Remover um item do carrinho
 export const removerItemDoCarrinho = async (produtoId) => {
   try {
     await axios.delete(`${CARRINHO_URL}/remover`, {
@@ -61,7 +57,6 @@ export const removerItemDoCarrinho = async (produtoId) => {
   }
 };
 
-// Limpar todo o carrinho do usuário
 export const limparCarrinho = async () => {
   try {
     await axios.delete(`${CARRINHO_URL}/limpar`, getAuthHeader());

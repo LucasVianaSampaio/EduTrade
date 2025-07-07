@@ -22,7 +22,6 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  // Relacionamentos
   carrinhoItens CarrinhoItem[]
   pedidos      Pedido[]
 }
@@ -39,7 +38,6 @@ model Produto {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   
-  // Relacionamentos
   carrinhoItens CarrinhoItem[]
   pedidoItens   PedidoItem[]
 }
@@ -55,7 +53,6 @@ model Categoria {
   updatedAt   DateTime  @updatedAt
 }
 
-// Modelo para itens do carrinho
 model CarrinhoItem {
   id        Int      @id @default(autoincrement())
   userId    Int
@@ -64,14 +61,12 @@ model CarrinhoItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  // Relacionamentos
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   produto Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
   
   @@unique([userId, produtoId])
 }
 
-// Modelo para pedidos
 model Pedido {
   id          Int      @id @default(autoincrement())
   userId      Int
@@ -83,12 +78,10 @@ model Pedido {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   
-  // Relacionamentos
   user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   pedidoItens PedidoItem[]
 }
 
-// Modelo para itens do pedido
 model PedidoItem {
   id        Int      @id @default(autoincrement())
   pedidoId  Int
@@ -97,7 +90,6 @@ model PedidoItem {
   precoUnitario Float
   createdAt DateTime @default(now())
   
-  // Relacionamentos
   pedido  Pedido  @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
-  produto Produto @relation(fields: [produtoId], references: [id])
+  produto Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
 }

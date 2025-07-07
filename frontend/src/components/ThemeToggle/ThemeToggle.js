@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa";
-import "./ThemeToggle.css"; // Importando o CSS
+import "./ThemeToggle.css";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);

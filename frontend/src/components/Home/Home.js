@@ -74,7 +74,7 @@ const Home = () => {
             produtos.map((produto) => (
               <li key={produto.id}>
                 <img
-                  src={"https://img.olx.com.br/images/12/123546280105650.jpg"}
+                  src={produto.imagemUrl}
                   alt={produto.titulo}
                   style={{
                     width: "100px",

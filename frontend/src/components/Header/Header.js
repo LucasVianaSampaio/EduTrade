@@ -19,7 +19,6 @@ const Header = () => {
         checkLogin();
     }, []);
 
-    // Fecha o dropdown ao clicar fora dele
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -34,7 +33,7 @@ const Header = () => {
         if (typeof window !== 'undefined') {
             localStorage.removeItem('token');
             setIsLoggedIn(false);
-            navigate('/login'); // Redireciona para o login após logout
+            navigate('/login');
         }
     };
 
@@ -57,12 +56,10 @@ const Header = () => {
                 </ul>
             </nav>
 
-            {/* Logo */}
             <div className="logo">
                 <h1>Sistema de ecommerce</h1>
             </div>
 
-            {/* Navbar padrão (desktop) */}
             <div className="nav-content">
                 <nav className="nav">
                     <ul>
@@ -73,7 +70,6 @@ const Header = () => {
                 </nav>
             </div>
 
-            {/* Dropdown para perfil (só quando logado) */}
             {isLoggedIn && (
                 <div className={`profile-container ${isDropdownOpen ? "active" : ""}`} ref={dropdownRef}>
                     <button
